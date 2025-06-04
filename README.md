@@ -9,7 +9,7 @@
 
 The **Instrumentation Score** is a standardized, vendor-neutral metric that quantifies the quality of OpenTelemetry instrumentation. Represented as a numerical value from **10 to 100**, it provides objective feedback on how well a service or system follows OpenTelemetry best practices and semantic conventions.
 
-The rules defined in this specification are classified into different severity levels, presenting actionable recommendations that teams can implement in order to improve the overall score of their services. These levels provide engineers with a recommended **prioritization** across a range of potential instrumentation issues, allowing them to focus on the most critical actions.
+The rules defined in this specification are classified into different impact levels, presenting actionable recommendations that teams can implement in order to improve the overall score of their services. These levels provide engineers with a recommended **prioritization** across a range of potential instrumentation issues, allowing them to focus on the most critical actions.
 
 ## Target Audience
 
