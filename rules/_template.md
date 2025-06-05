@@ -4,7 +4,7 @@
 
 **Rationale:** \[Explanation of why this rule is important for instrumentation quality. What benefit does adherence provide, or what problem does non-adherence cause? Link to relevant OpenTelemetry specifications (e.g., Semantic Conventions) or established best practices if applicable. Explain the impact on observability, efficiency, or cost.\]
 
-**Target:** \[Specify the primary OTLP element this rule evaluates: Resource | Span | Metric | Log | Profile | Other (Specify)\]
+**Target:** \[Specify the primary OTLP element this rule evaluates: Resource | Span | Metric | Log | Profile | Other (Specify) or the component: SDK | Collector | Other (Specify)\]
 
 **Criteria:** \[The precise, objective conditions under which this rule is triggered when analyzing OTLP data. This description must be unambiguous and algorithmically testable. Provide specific attribute names, expected values or patterns, conditions for presence/absence, thresholds, etc. Use backticks for attribute names or code elements.\]
 
