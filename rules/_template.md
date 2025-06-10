@@ -16,6 +16,6 @@
 * *"More than 10 spans within the service in a single trace have a duration less than 5 milliseconds."*  
 * *"A log record with severity\_text \= 'DEBUG' is observed in an environment where the Resource attribute deployment.environment.name is set to production."*
 
-**Severity:** \[Choose one: Critical | Very Important | Important | Normal | Low\] (Based on the perceived impact of violating this rule on overall observability effectiveness or efficiency.)
+**Impact:** \[Choose one: Critical | Very Important | Important | Normal | Low\] (Based on the perceived impact of violating this rule on overall observability effectiveness or efficiency.)
 
 **Type:** \[Choose one: Positive | Negative\] (Indicates if the rule adds points for good practice or subtracts points for deficiency.)  

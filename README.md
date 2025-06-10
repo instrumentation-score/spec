@@ -83,8 +83,8 @@ Score_final = max(10, Score_intermediate)
 
 Where:
 - `P_p`: Points from positive rules (good practices)
-- `N_m`: Points from minor negative rules (Low, Normal, Important severity)
-- `N_h`: Points from major negative rules (Very Important, Critical severity)
+- `N_m`: Points from minor negative rules (Low, Normal, Important impact)
+- `N_h`: Points from major negative rules (Very Important, Critical impact)
 
 ## Documentation
 
@@ -114,7 +114,7 @@ Scoring rules are the foundation of the Instrumentation Score. Each rule include
 - **Rationale**: Why this rule matters for quality
 - **Criteria**: Objective conditions for rule application
 - **Target**: OTLP element type (`Resource`, `TraceSpan`, `Metric`, `Log`)
-- **Severity**: Impact level (`Critical`, `Very Important`, `Important`, `Normal`, `Low`)
+- **Impact**: Impact level (`Critical`, `Very Important`, `Important`, `Normal`, `Low`)
 - **Type**: `Positive` (rewards) or `Negative` (penalizes)
 
 ### Example Rule
@@ -124,7 +124,7 @@ id: RES-001
 description: "Service name must be present"
 rationale: "service.name is fundamental for service identification and observability"
 target: Resource
-severity: Critical
+impact: Critical
 type: Negative
 criteria: "Resource attributes must contain 'service.name' key with non-empty value"
 ```

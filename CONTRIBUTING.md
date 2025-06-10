@@ -89,7 +89,7 @@ Each rule must include:
 - **Rationale**: Why this rule matters for instrumentation quality
 - **Criteria**: Specific, objective conditions for rule application
 - **Target**: Which OTLP element it applies to (Resource, TraceSpan, Metric, Log)
-- **Severity**: Impact level (Critical, Very Important, Important, Normal, Low)
+- **Impact**: Impact level (Critical, Very Important, Important, Normal, Low)
 - **Type**: Positive (rewards) or Negative (penalizes)
 
 ### Rule Guidelines
@@ -131,7 +131,7 @@ Use clear, descriptive commit messages:
 feat: add rule for missing `service.version` attribute
 
 - Defines RES-002 rule for service.version presence
-- Categorized as "Very Important" severity
+- Categorized as "Very Important" impact
 - Includes rationale and implementation criteria
 ```
 

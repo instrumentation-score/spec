@@ -41,7 +41,7 @@ This specification assumes familiarity with OpenTelemetry concepts, OTLP data fo
 
 Before defining the specifics, it's valuable to consider established scoring systems in other technical domains:
 
-* **CVSS (Common Vulnerability Scoring System):** This standard for vulnerability severity demonstrates the power of a transparent, multi-faceted scoring system based on clearly defined metrics. Its separation of a universal base score from contextual modifiers is also instructive. The key takeaway is the importance of **standardization and transparency** for wide adoption and trust.  
+* **CVSS (Common Vulnerability Scoring System):** This standard for vulnerability impact demonstrates the power of a transparent, multi-faceted scoring system based on clearly defined metrics. Its separation of a universal base score from contextual modifiers is also instructive. The key takeaway is the importance of **standardization and transparency** for wide adoption and trust.
 * **Google Lighthouse:** Scoring web page quality, Lighthouse excels at linking scores directly to **actionable recommendations**, making it highly valuable for users seeking improvement. Its use of weighted averages and data-driven thresholds also provides useful patterns.  
 * **SonarQube Quality Gate:** By using Pass/Fail gates based on code metrics, SonarQube shows how quality scores can be integrated into **developer workflows** (like CI/CD pipelines) to enforce standards, particularly focusing on the quality of *new* code.  
 * **SSL Labs Server Test:** This TLS configuration grader effectively uses **grade capping**, where critical flaws (like weak protocols) limit the maximum achievable score, regardless of other positive factors. It also rewards exceptional configurations (e.g., HSTS for an A+), providing clear incentives.
@@ -82,7 +82,7 @@ The scoring mechanism is driven by rules derived primarily from OpenTelemetry Se
 * Rationale: Justification for the rule's importance to quality.
 * Criteria: The specific, objective conditions within OTLP data that trigger the rule.
 * Target: The OTLP signal or element it applies to. Must be one of: `Resource`, `TraceSpan`, `Metric`, `Log`.
-* Severity: An assigned importance level influencing score impact. Must be one of: `Critical`, `Very Important`, `Important`, `Normal`, `Low`.
+* Impact: An assigned importance level influencing score impact. Must be one of: `Critical`, `Very Important`, `Important`, `Normal`, `Low`.
 * Type: Indicates the rule's effect: `Positive` (rewards good practice) or `Negative` (penalizes deficiency).
 
 The initial proposed point values are:
@@ -99,8 +99,8 @@ The final score (*Scorefinal​*) reflects a balance of positive and negative fa
 
 * **Terms Definition:**  
   * *Pp​*: Sum of points from all triggered *positive* rules.  
-  * *Nm​*: Sum of points from all triggered *negative* rules with Severity Low, Normal, or Important.  
-  * *Nh​*: Sum of points from all triggered *negative* rules with Severity Very Important or Critical.  
+  * *Nm​*: Sum of points from all triggered *negative* rules with Impact Low, Normal, or Important.
+  * *Nh​*: Sum of points from all triggered *negative* rules with Impact Very Important or Critical.
 * **Calculation Steps:**  
   1. Calculate Intermediate Score: Start with a base score (default 80), add positive points, subtract minor negative points, cap at 100, and then subtract the full impact of major negative points.  
      	*Scoreintermediate​\=min(100,80+Pp​−Nm​)−Nh​*  
