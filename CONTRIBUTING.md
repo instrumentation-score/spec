@@ -18,7 +18,7 @@ The Instrumentation Score Specification defines a standardized metric for assess
 
 1. **Read the specification**: Review the main [specification.md](./specification.md) document
 2. **Understand the goals**: Familiarize yourself with the project's objectives and scope
-3. **Join the community**: Connect with us on [CNCF Slack #instrumentation-score](https://cloud-native.slack.com/archives/C08U9NN1XBR)
+3. **Join the community**: Connect with us on [CNCF Slack #instrumentation-score](https://cloud-native.slack.com/archives/C090FEG5R0F)
 4. **Review existing issues**: Check [GitHub Issues](https://github.com/instrumentation-score/spec/issues) for current discussions
 
 ## Ways to Contribute
@@ -140,7 +140,7 @@ feat: add rule for missing `service.version` attribute
 ### Discussion Channels
 
 - **GitHub Issues**: For specific problems, proposals, and bugs
-- **CNCF Slack**: Join [#instrumentation-score](https://cloud-native.slack.com/archives/C08U9NN1XBR) for real-time discussion
+- **CNCF Slack**: Join [#instrumentation-score](https://cloud-native.slack.com/archives/C090FEG5R0F) for real-time discussion
 - **Pull Requests**: For code and documentation review discussions
 
 ### Getting Help
@@ -182,7 +182,7 @@ Contributors are recognized in several ways:
 ## Questions?
 
 If you have questions about contributing, please:
-- Join our [CNCF Slack channel](https://cloud-native.slack.com/archives/C08U9NN1XBR)
+- Join our [CNCF Slack channel](https://cloud-native.slack.com/archives/C090FEG5R0F)
 - Create a GitHub issue with the "question" label
 - Review the [governance document](./GOVERNANCE.md) for project structure
 

@@ -64,7 +64,7 @@ All community members are encouraged to participate through:
 
 ### Public Forums
 - **GitHub Issues**: Technical discussions and bug reports
-- **CNCF Slack**: Join [#instrumentation-score channel](https://cloud-native.slack.com/archives/C08U9NN1XBR) for technical discussions
+- **CNCF Slack**: Join [#instrumentation-score channel](https://cloud-native.slack.com/archives/C090FEG5R0F) for technical discussions
 - **Documentation**: To be maintained in the project repository
 
 ### Regular Activities

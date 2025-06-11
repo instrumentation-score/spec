@@ -3,7 +3,7 @@
 > A standardized metric for assessing OpenTelemetry instrumentation quality
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CNCF Slack](https://img.shields.io/badge/CNCF%20Slack-%23instrumentation--score-blue)](https://cloud-native.slack.com/archives/C08U9NN1XBR)
+[![CNCF Slack](https://img.shields.io/badge/CNCF%20Slack-%23instrumentation--score-blue)](https://cloud-native.slack.com/archives/C090FEG5R0F)
 
 ## Overview
 
@@ -135,7 +135,7 @@ criteria: "Resource attributes must contain 'service.name' key with non-empty va
 
 We welcome contributions from the OpenTelemetry community! Here's how to participate:
 
-- 💬 **Join Discussion**: [CNCF Slack #instrumentation-score](https://cloud-native.slack.com/archives/C08U9NN1XBR)
+- 💬 **Join Discussion**: [CNCF Slack #instrumentation-score](https://cloud-native.slack.com/archives/C090FEG5R0F)
 - 🐛 **Report Issues**: [GitHub Issues](https://github.com/instrumentation-score/spec/issues)
 - 🔀 **Submit Changes**: Follow our [contributing guide](./CONTRIBUTING.md)
 - 📅 **Attend Meetings**: Community meetings (schedule in Slack)
@@ -176,4 +176,4 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 **Start improving your instrumentation quality today!** 🚀
 
-For questions, feedback, or discussions, join us in the [CNCF Slack #instrumentation-score channel](https://cloud-native.slack.com/archives/C08U9NN1XBR).
+For questions, feedback, or discussions, join us in the [CNCF Slack #instrumentation-score channel](https://cloud-native.slack.com/archives/C090FEG5R0F).
