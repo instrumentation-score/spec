@@ -1,0 +1,27 @@
+name: Propose a new rule
+description: Submit a proposal for a new rule.
+title: "Rule proposal: "
+labels: ["rule"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time submit a rule proposal! Please fill in as many details below
+  - type: textarea
+    id: rule-proposal
+    attributes:
+      label: Proposal
+      value: |
+        **Rule ID:** 
+
+        **Description:** 
+
+        **Rationale:** 
+
+        **Target:** 
+
+        **Criteria:** 
+
+        **Impact:** 
+
+        **Type:** 
