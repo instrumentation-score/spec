@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time submit a rule proposal! Please fill in as many details below
+        Thanks for taking the time to submit a rule proposal! Please fill in as many details as possible.
   - type: textarea
     id: rule-proposal
     attributes:
