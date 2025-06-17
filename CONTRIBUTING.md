@@ -90,7 +90,6 @@ Each rule must include:
 - **Criteria**: Specific, objective conditions for rule application
 - **Target**: Which OTLP element it applies to (Resource, TraceSpan, Metric, Log)
 - **Impact**: Impact level (Critical, Important, Normal, Low)
-- **Type**: Positive (rewards) or Negative (penalizes)
 
 ### Rule Guidelines
 
