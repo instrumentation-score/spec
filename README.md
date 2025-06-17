@@ -7,7 +7,7 @@
 
 ## Overview
 
-The **Instrumentation Score** is a standardized, vendor-neutral metric that quantifies the quality of OpenTelemetry instrumentation. Represented as a numerical value from **10 to 100**, it provides objective feedback on how well a service or system follows OpenTelemetry best practices and semantic conventions.
+The **Instrumentation Score** is a standardized, vendor-neutral metric that quantifies the quality of OpenTelemetry instrumentation. Represented as a numerical value from **0 to 100**, it provides objective feedback on how well a service or system follows OpenTelemetry best practices and semantic conventions.
 
 The rules defined in this specification are classified into different impact levels, presenting actionable recommendations that teams can implement in order to improve the overall score of their services. These levels provide engineers with a recommended **prioritization** across a range of potential instrumentation issues, allowing them to focus on the most critical actions.
 
@@ -67,24 +67,26 @@ The Instrumentation Score uses these qualitative categories:
 
 ### How It Works
 
-1. **Analyze OTLP Data**: The score is calculated by analyzing OpenTelemetry Protocol (OTLP) telemetry streams
-2. **Apply Rules**: A set of standardized rules evaluate traces, metrics, and resource attributes
-3. **Calculate Score**: Mathematical formula combines positive and negative factors
-4. **Provide Feedback**: Actionable insights guide improvements
+1. **Analyze OTLP Data**: The score is calculated by analyzing OpenTelemetry Protocol (OTLP) telemetry streams.
+2. **Apply Rules**: A set of standardized rules evaluate traces, metrics, and resource attributes. Each rule is evaluated as a boolean condition with `true` implying success and `false` implying failure.
+3. **Calculate Score**: Mathematical formula generates a single score, applying weights to each rule check.
+4. **Provide Feedback**: Actionable insights guide improvements.
 
 ### Score Calculation
 
-The score uses this formula:
+Let:
 
-```
-Score_intermediate = min(100, 80 + P_p - N_m) - N_h
-Score_final = max(10, Score_intermediate)
-```
+* $N$ be the total number of impact levels.
+* $L_i$ denote the $i$-th impact level, where $i \in \{1, 2, \dots, N\}$.
+* $W_i$ be the weight assigned to the $i$-th impact level ($L_i$).
+* $P_i$ be the number of rules passed, or succeeded, for impact level $L_i$.
+* $T_i$ be the total number of rules for impact level $L_i$.
 
-Where:
-- `P_p`: Points from positive rules (good practices)
-- `N_m`: Points from minor negative rules (Low, Normal, Important impact)
-- `N_h`: Points from major negative rules (Very Important, Critical impact)
+The _Instrumentation Score_ is calculated as:
+
+$$\text{Score} = \frac{\sum_{i=1}^{N} (P_i \times W_i)}{\sum_{i=1}^{N} (T_i \times W_i)} \times 100$$
+
+See the [Specification](./specification.md) for further examples and further details.
 
 ## Documentation
 
@@ -109,13 +111,12 @@ This specification is designed to be **implementation-agnostic**. Multiple tools
 
 Scoring rules are the foundation of the Instrumentation Score. Each rule includes:
 
-- **ID**: Unique identifier (e.g., `RES-001`, `SPAN-042`)
-- **Description**: Human-readable explanation
-- **Rationale**: Why this rule matters for quality
-- **Criteria**: Objective conditions for rule application
-- **Target**: OTLP element type (`Resource`, `TraceSpan`, `Metric`, `Log`)
-- **Impact**: Impact level (`Critical`, `Very Important`, `Important`, `Normal`, `Low`)
-- **Type**: `Positive` (rewards) or `Negative` (penalizes)
+- **ID**: Unique identifier (e.g., `RES-001`, `SPAN-042`).
+- **Description**: Human-readable explanation.
+- **Rationale**: Why this rule matters for quality.
+- **Criteria**: Boolean condition that evaluates as `true` for success or `false` for failure.
+- **Target**: OTLP element type (`Resource`, `TraceSpan`, `Metric`, `Log`),
+- **Impact**: Impact level (`Critical`, `Important`, `Normal`, `Low`).
 
 ### Example Rule
 

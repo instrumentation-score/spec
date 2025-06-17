@@ -2,7 +2,7 @@
 
 The OpenTelemetry project provides a powerful, vendor-neutral framework for instrumenting, generating, collecting, and exporting telemetry data (traces, metrics, logs). However, as adoption grows, organizations often face challenges with the *quality* and *consistency* of their instrumentation. Issues like missing critical attributes (e.g., `service.name`), inefficient use of telemetry signals (e.g., using verbose logs where metrics suffice), high cardinality, or incomplete traces can hinder observability effectiveness, increase costs, and make troubleshooting difficult. Currently, the OpenTelemetry ecosystem lacks a standardized, transparent, and objective method for assessing the quality of this instrumentation.
 
-To address this gap, this document proposes a specification for a standardized **Instrumentation Score**. This score, represented as a numerical value ranging from **10 to 100**, aims to provide a quantifiable measure of how well a service or system is instrumented according to OpenTelemetry best practices and semantic conventions. It is calculated by analyzing OpenTelemetry Protocol (OTLP) data streams against a defined set of rules.
+To address this gap, this document proposes a specification for a standardized **Instrumentation Score**. This score, represented as a numerical value ranging from **0 to 100**, aims to provide a quantifiable measure of how well a service or system is instrumented according to OpenTelemetry best practices and semantic conventions. It is calculated by analyzing OpenTelemetry Protocol (OTLP) data streams against a defined set of rules.
 
 The introduction of such a standard score offers several significant benefits:
 
@@ -71,42 +71,59 @@ It is explicitly **not** the goal of this specification to:
 
 ### **Overview**
 
-The Instrumentation Score is a numerical value between 10 (Poor) and 100 (Excellent). It assesses the quality of instrumentation based on the automated analysis of OTLP telemetry data streams, primarily focusing on Traces and associated Resource attributes in its initial conception, with potential future expansion to Metrics and Logs. The score is typically calculated per `service.name`, representing the quality over a defined sliding time window (defaulting to 30 days). Implementations may support aggregation to higher levels (e.g., organization-wide), potentially applying additional rules at that level. The calculation relies on applying a defined set of Rules to the observed telemetry. Implementations MUST NOT include other rules to the instrumentation score that don't belong to the specification: the instrumentation score obtained by a service using a specific implementation must yield the same instrumentation score when using a different implementation. If an implementation doesn't implement all rules, they MUST provide information to their users that the instrumentation score might not be complete.
+The Instrumentation Score is a numerical value between 0 (Poor) and 100 (Excellent). It assesses the quality of instrumentation based on the automated analysis of OTLP telemetry data streams, primarily focusing on Traces and associated Resource attributes in its initial conception, with potential future expansion to Metrics and Logs. The score is typically calculated per `service.name`, representing the quality over a defined sliding time window (defaulting to 30 days). Implementations may support aggregation to higher levels (e.g., organization-wide), potentially applying additional rules at that level. The calculation relies on applying a defined set of Rules to the observed telemetry. Implementations MUST NOT include other rules to the instrumentation score that don't belong to the specification: the instrumentation score obtained by a service using a specific implementation must yield the same instrumentation score when using a different implementation. If an implementation doesn't implement all rules, they MUST provide information to their users that the instrumentation score might not be complete.
 
 ### **Rules**
 
 The scoring mechanism is driven by rules derived primarily from OpenTelemetry Semantic Conventions and community-accepted best practices. Each rule must be clearly defined with the following attributes:
 
-* ID: A unique, stable identifier (e.g., RES-001).
-* Description: A human-readable explanation.
-* Rationale: Justification for the rule's importance to quality.
-* Criteria: The specific, objective conditions within OTLP data that trigger the rule.
-* Target: The OTLP signal or element it applies to. Must be one of: `Resource`, `TraceSpan`, `Metric`, `Log`.
-* Impact: An assigned importance level influencing score impact. Must be one of: `Critical`, `Very Important`, `Important`, `Normal`, `Low`.
-* Type: Indicates the rule's effect: `Positive` (rewards good practice) or `Negative` (penalizes deficiency).
+* _ID_: A unique, stable identifier (e.g., RES-001).
+* _Description_: A human-readable explanation.
+* _Rationale_: Justification for the rule's importance to quality.
+* _Criteria_: Boolean condition that evaluates as `true` for success or `false` for failure. Multiple sub-conditions may be used, in which case the overall result is an `AND` operation on all conditions.
+* _Target_: The OTLP signal or element it applies to. Must be one of: `Resource`, `TraceSpan`, `Metric`, `Log`.
+* _Impact_: An assigned importance level influencing score impact. Must be one of: `Critical`, `Important`, `Normal`, `Low`.
 
-The initial proposed point values are:
+As explained in the _Score Calculation Formula_ section below, each of these impact levels has an associated **weight**, which increases the associated rule's importance in the resulting score:
 
-* Critical: 40 points (Negative rules only)  
-* Very Important: 20 points  
-* Important: 10 points  
-* Normal: 5 points  
-* Low: 1 point
+* _Critical_: 40
+* _Important_: 30
+* _Normal_: 20
+* _Low_: 10
 
 ### **Score Calculation Formula**
 
-The final score (*Scorefinal​*) reflects a balance of positive and negative factors, ensures major issues significantly impact the score, and adheres to the 10-100 range.
+The final _Instrumentation Score_ ensures major issues significantly impact the score, and adheres to the 0-100 range.
 
-* **Terms Definition:**  
-  * *Pp​*: Sum of points from all triggered *positive* rules.  
-  * *Nm​*: Sum of points from all triggered *negative* rules with Impact Low, Normal, or Important.
-  * *Nh​*: Sum of points from all triggered *negative* rules with Impact Very Important or Critical.
-* **Calculation Steps:**  
-  1. Calculate Intermediate Score: Start with a base score (default 80), add positive points, subtract minor negative points, cap at 100, and then subtract the full impact of major negative points.  
-     	*Scoreintermediate​\=min(100,80+Pp​−Nm​)−Nh​*  
-  2. Apply Floor/Ceiling: Ensure the final score is within the 10 to 100 range.  
-     	*Scorefinal​\=max(10,Scoreintermediate​)*  
-* **Rationale:** This structure ensures that while good practices (*Pp​*) can offset minor issues (*Nm​*), major deficiencies (*Nh*​) act as a significant deterrent, potentially capping the achievable score, aligning with lessons from prior art like SSL Labs. The base score of 80 provides a neutral starting point, and the final `max(10, ...)` prevents demotivating zero scores. The base score and point values are initial suggestions requiring validation with real-world workloads.
+Let:
+
+* $N$ be the total number of impact levels.
+* $L_i$ denote the $i$-th impact level, where $i \in \{1, 2, \dots, N\}$.
+* $W_i$ be the weight assigned to the $i$-th impact level ($L_i$).
+* $P_i$ be the number of rules passed, or succeeded, for impact level $L_i$.
+* $T_i$ be the total number of rules for impact level $L_i$.
+
+The _Instrumentation Score_ is calculated as:
+
+$$\text{Score} = \frac{\sum_{i=1}^{N} (P_i \times W_i)}{\sum_{i=1}^{N} (T_i \times W_i)} \times 100$$
+
+To illustrate this we can use the weights specified in the previous section, and the following compliance across impact levels:
+
+* **Critical**: 4/8 rules passed ($P_1 = 4$, $T_1 = 8$)
+* **Important**: 8/10 rules passed ($P_2 = 8$, $T_2 = 10$)
+* **Normal**: 6/8 rules passed ($P_3 = 6$, $T_3 = 8$)
+* **Low**: 1/5 rules passed ($P_4 = 1$, $T_4 = 5$)
+
+Substituting the values into the formula with the updated weights:
+
+$$\text{Score} = \frac{(4 \times 40) + (8 \times 30) + (6 \times 20) + (1 \times 10)}{(8 \times 40) + (10 \times 30) + (8 \times 20) + (5 \times 10)} \times 100$$
+
+With the final score as:
+
+$$\text{Score} = \frac{530}{830} \times 100 \approx 0.63855 \times 100 \approx 63.86$$
+
+
+This structure ensures that major deficiencies act as a significant deterrent, potentially capping the achievable score, aligning with lessons from prior art like SSL Labs. At the same time, it presents a clear prioritization for teams addressing failed rules. Solving 4 _Critical_ impact issues would increase the score to 83.13, while solving 4 _Low_ impact issues would achieve 67.47.
 
 ### **Qualitative Categories**
 
@@ -125,8 +142,8 @@ These ranges provide clear signals for action, with "Excellent" being a distinct
 
 The initial set of official rules should prioritize high-impact, widely applicable checks, primarily based on stable OpenTelemetry Semantic Conventions and focusing on foundational elements like Traces and Resource attributes. A comprehensive rule set accompanies this repository under the [rules](./rules/) directory, but illustrative examples include:
 
-* *Negative Rules:* Missing `service.name` (Critical), missing `service.version` (Very Important), missing `deployment.environment.name` (Normal), patterns suggesting logs used inefficiently instead of metrics (Normal), high cardinality detected in metric dimensions (Important).  
-* *Positive Rules:* Presence of recommended attributes like `service.instance.id` (Important).
+* Missing `service.name` (Critical), missing `service.version` (Important), missing `deployment.environment.name` (Normal), patterns suggesting logs used inefficiently instead of metrics (Normal), high cardinality detected in metric dimensions (Important).  
+* Presence of recommended attributes like `service.instance.id` (Important).
 
 ## **Intended Usage and Benefits**
 

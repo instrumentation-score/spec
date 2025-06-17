@@ -1,6 +1,6 @@
 **Rule ID:** \[Unique Rule ID\]
 
-**Description:** \[A brief, clear statement describing the purpose of the rule and what condition it checks for.\]
+**Description:** \[A brief, clear statement describing the purpose of the rule and what it achieves if the check passes. E.g. "Traces contain low number of internal spans per service"\]
 
 **Rationale:** \[Explanation of why this rule is important for instrumentation quality. What benefit does adherence provide, or what problem does non-adherence cause? Link to relevant OpenTelemetry specifications (e.g., Semantic Conventions) or established best practices if applicable. Explain the impact on observability, efficiency, or cost.\]
 
@@ -16,6 +16,4 @@
 * *"More than 10 spans within the service in a single trace have a duration less than 5 milliseconds."*  
 * *"A log record with severity\_text \= 'DEBUG' is observed in an environment where the Resource attribute deployment.environment.name is set to production."*
 
-**Impact:** \[Choose one: Critical | Very Important | Important | Normal | Low\] (Based on the perceived impact of violating this rule on overall observability effectiveness or efficiency.)
-
-**Type:** \[Choose one: Positive | Negative\] (Indicates if the rule adds points for good practice or subtracts points for deficiency.)  
+**Impact:** \[Choose one: Critical | Important | Normal | Low\] (Based on the perceived impact of violating this rule on overall observability effectiveness or efficiency.)
