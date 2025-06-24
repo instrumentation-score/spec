@@ -58,12 +58,12 @@ The Instrumentation Score addresses these challenges by providing:
 
 The Instrumentation Score uses these qualitative categories:
 
-| Score Range | Category              | Meaning                                    |
-| ----------- | --------------------- | ------------------------------------------ |
-| 90-100      | **Excellent**         | High standard of instrumentation quality   |
-| 75-89       | **Good**              | Solid quality; minor improvements possible |
-| 50-74       | **Needs Improvement** | Tangible issues requiring attention        |
-| 10-49       | **Poor**              | Significant problems needing urgent action |
+| Score Range | Coverage Level | Interpretation |
+|-------------|----------------|------------------|
+| 90-100      | **Complete Coverage** | Comprehensive instrumentation |
+| 75-89       | **Advanced Coverage** | Extensive instrumentation coverage |
+| 50-74       | **Standard Coverage** | Basic instrumentation coverage |
+| 10-49       | **Limited Coverage**  | Limited instrumentation coverage |
 
 ### How It Works
 
