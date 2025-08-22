@@ -125,18 +125,16 @@ $$\text{Score} = \frac{530}{830} \times 100 \approx 0.63855 \times 100 \approx 6
 
 This structure ensures that major deficiencies act as a significant deterrent, potentially capping the achievable score, aligning with lessons from prior art like SSL Labs. At the same time, it presents a clear prioritization for teams addressing failed rules. Solving 4 _Critical_ impact issues would increase the score to 83.13, while solving 4 _Low_ impact issues would achieve 67.47.
 
-### **Qualitative Categories**
+### **Coverage Levels**
 
-To simplify interpretation, the numerical score is mapped to intuitive qualitative categories:
+The Instrumentation Score uses these qualitative categories:
 
-| Score Range | Category | Interpretation Guidance |
-| :---- | :---- | :---- |
-| 90 \- 100 | **Excellent** | Represents a high standard of instrumentation quality. |
-| 75 \- 89 | **Good** | Solid, acceptable quality; minor improvements may be possible. |
-| 50 \- 74 | **Needs Improvement** | Indicates tangible issues requiring attention and remediation. |
-| 10 \- 49 | **Poor** | Signals significant instrumentation problems needing urgent action. |
-
-These ranges provide clear signals for action, with "Excellent" being a distinct achievement and "Poor" indicating likely critical issues.
+| Score Range | Coverage Level | Interpretation |
+|-------------|----------------|------------------|
+| 90-100      | **Complete Coverage** | Comprehensive instrumentation |
+| 75-89       | **Advanced Coverage** | Extensive instrumentation coverage |
+| 50-74       | **Standard Coverage** | Basic instrumentation coverage |
+| 10-49       | **Limited Coverage**  | Limited instrumentation coverage |
 
 ### **Initial Rule Set Considerations**
 
