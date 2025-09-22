@@ -63,7 +63,7 @@ The Instrumentation Score uses these qualitative categories:
 | 90-100      | **Excellent**         | High standard of instrumentation quality   |
 | 75-89       | **Good**              | Solid quality; minor improvements possible |
 | 50-74       | **Needs Improvement** | Tangible issues requiring attention        |
-| 10-49       | **Poor**              | Significant problems needing urgent action |
+| 0-49        | **Poor**              | Significant problems needing urgent action |
 
 ### How It Works
 
