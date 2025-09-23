@@ -53,7 +53,7 @@ These examples underscore the need for the Instrumentation Score to be standardi
 The primary **goals** of this specification are to:
 
 * Define a **standardized**, vendor-neutral metric for instrumentation quality.  
-* Provide **quantifiable and transparent** feedback via a numerical score (10-100) and an open calculation method.  
+* Provide **quantifiable and transparent** feedback via a numerical score (0-100) and an open calculation method.  
 * Offer **actionable insights** by structuring the score to guide improvements.  
 * **Promote best practices** in line with OpenTelemetry standards.  
 * Establish a **governed framework** allowing for community-driven evolution.  
@@ -134,7 +134,7 @@ To simplify interpretation, the numerical score is mapped to intuitive qualitati
 | 90 \- 100 | **Excellent** | Represents a high standard of instrumentation quality. |
 | 75 \- 89 | **Good** | Solid, acceptable quality; minor improvements may be possible. |
 | 50 \- 74 | **Needs Improvement** | Indicates tangible issues requiring attention and remediation. |
-| 10 \- 49 | **Poor** | Signals significant instrumentation problems needing urgent action. |
+| 0 \- 49 | **Poor** | Signals significant instrumentation problems needing urgent action. |
 
 These ranges provide clear signals for action, with "Excellent" being a distinct achievement and "Poor" indicating likely critical issues.
 
