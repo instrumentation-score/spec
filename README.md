@@ -118,6 +118,8 @@ Scoring rules are the foundation of the Instrumentation Score. Each rule include
 - **Target**: OTLP element type (`Resource`, `TraceSpan`, `Metric`, `Log`),
 - **Impact**: Impact level (`Critical`, `Important`, `Normal`, `Low`).
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in rule criteria are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
+
 ### Example Rule
 
 ```yaml
@@ -127,7 +129,7 @@ rationale: "service.name is fundamental for service identification and observabi
 target: Resource
 impact: Critical
 type: Negative
-criteria: "Resource attributes must contain 'service.name' key with non-empty value"
+criteria: "Resource attributes MUST contain 'service.name' key with non-empty value"
 ```
 
 ## Community

@@ -6,7 +6,7 @@
 
 **Target:** \[Specify the primary OTLP element this rule evaluates: Resource | Span | Metric | Log | Profile | Other (Specify) or the component: SDK | Collector | Other (Specify)\]
 
-**Criteria:** \[The precise, objective conditions under which this rule is triggered when analyzing OTLP data. This description must be unambiguous and algorithmically testable. Provide specific attribute names, expected values or patterns, conditions for presence/absence, thresholds, etc. Use backticks for attribute names or code elements.\]
+**Criteria:** \[The precise, objective conditions under which this rule is triggered when analyzing OTLP data. This description MUST be unambiguous and algorithmically testable. Provide specific attribute names, expected values or patterns, conditions for presence/absence, thresholds, etc. Use backticks for attribute names or code elements.\]
 
 **Examples:**
 
