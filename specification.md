@@ -123,7 +123,7 @@ With the final score as:
 $$\text{Score} = \frac{530}{830} \times 100 \approx 0.63855 \times 100 \approx 63.86$$
 
 
-This structure ensures that major deficiencies act as a significant deterrent, potentially capping the achievable score, aligning with lessons from prior art like SSL Labs. At the same time, it presents a clear prioritization for teams addressing failed rules. Solving 4 _Critical_ impact issues would increase the score to 83.13, while solving 4 _Low_ impact issues would achieve 67.47.
+This structure gives major deficiencies a much larger weight in the score, without capping it, and presents a clear prioritization for teams addressing failed rules. Solving 4 _Critical_ impact issues would increase the score to 83.13, while solving 4 _Low_ impact issues would achieve 67.47.
 
 ### **Qualitative Categories**
 
