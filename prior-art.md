@@ -52,7 +52,7 @@
   * Applies specific *rules* that can cap or boost the grade (e.g., no TLS 1.3 support caps grade at A-; HSTS required for A+; known vulnerabilities result in F).
 * **Learnings for Instrumentation Score:**
   * **Rewarding Excellence (A+):** Having a top tier that requires specific best practices encourages going beyond "good enough". Instrumentation Score's idea of potential bonus points aligns.
-  * **Grade Caps for Deficiencies:** Critical issues directly limit the maximum achievable score, regardless of other positive factors. Instrumentation Score's formula using Critical/Important rules directly mirrors this effective approach.
+  * **Grade Caps for Deficiencies:** Critical issues directly limit the maximum achievable score, regardless of other positive factors. Instrumentation Score does not cap the score; it gives Critical and Important rules higher weights instead.
   * **Clear Criteria:** SSL Labs is trusted because its criteria (while complex) are documented and based on established security best practices. The Instrumentation Score rules need to be grounded in OTel specs and community consensus.
   * **Evolution:** SSL Labs grading evolves as best practices change (e.g., requirements for TLS versions, key lengths). The Instrumentation Score governance needs to allow for similar evolution.
 
