@@ -1,9 +1,10 @@
 # Rule index
 
-This index is generated from the rule descriptions. Search this page to check
-whether a rule already covers an idea, then follow its link for the criteria.
+Search this page by rule ID or description. Each ID links to the full rule
+and its criteria.
 
-To update it after editing a rule, run `python3 scripts/generate_rule_index.py`.
+To regenerate this index, run `python3 scripts/generate_rule_index.py` from
+the repository root.
 
 ## LOG
 
@@ -19,6 +20,7 @@ To update it after editing a rule, run `python3 scripts/generate_rule_index.py`.
 - [MET-004](MET-004.md): Histogram metrics consistently use the same histogram buckets per metric name.
 - [MET-005](MET-005.md): Metric names do not contain the name of the metric unit.
 - [MET-006](MET-006.md): Metric names do not equal semantic convention attribute keys.
+- [MET-007](MET-007.md): Metrics do not carry volatile or verbose resource attributes.
 - [MET-008](MET-008.md): Metrics do not contain sensitive data such as PII, financial identifiers, credentials, or health information.
 
 ## RES
@@ -28,7 +30,7 @@ To update it after editing a rule, run `python3 scripts/generate_rule_index.py`.
 - [RES-003](RES-003.md): `k8s.pod.uid` is present in telemetry collected from applications running on a Kubernetes cluster, or from the control pane of the Kubernetes cluster itself.
 - [RES-004](RES-004.md): Semantic conventions attributes are used at the right level.
 - [RES-005](RES-005.md): `service.name` is present
-- [RES-006](RES-006.md): `service.criticality` uses a valid enum value
+- [RES-006](RES-006.md): `service.criticality` uses the canonical form of its well-known values
 - [RES-007](RES-007.md): `deployment.environment.name` is present
 - [RES-010](RES-010.md): Resource attribute values do not contain sensitive data such as PII, financial identifiers, credentials, or health information.
 
