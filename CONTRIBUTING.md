@@ -81,6 +81,12 @@ The main specification is organized into these key sections:
 
 Rules are the core mechanism for calculating instrumentation scores. They are located in the `rules/` directory.
 
+When adding or removing a rule, or changing its ID or description, run the following command from the repository root and include the updated [rule index](./rules/README.md) in your pull request. CI checks that the index is up to date.
+
+```sh
+python3 scripts/generate_rule_index.py
+```
+
 ### Rule Structure
 
 Each rule must include:

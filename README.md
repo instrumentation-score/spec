@@ -94,7 +94,7 @@ See the [Specification](./specification.md) for further examples and further det
 🔧 **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project  
 🏛️ **[Governance](./GOVERNANCE.md)** - Project governance and maintainers  
 📚 **[Prior Art](./prior-art.md)** - Research on existing scoring systems  
-📋 **[Rules Directory](./rules/)** - Complete set of scoring rules
+📋 **[Rule Index](./rules/README.md)** - Searchable list of all scoring rules
 
 ## Implementation
 
